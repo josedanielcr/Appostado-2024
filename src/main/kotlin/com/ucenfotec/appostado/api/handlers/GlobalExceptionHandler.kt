@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import java.time.LocalDateTime
+import java.util.concurrent.ExecutionException
 
 @ControllerAdvice
 class GlobalExceptionHandler {
@@ -23,8 +24,16 @@ class GlobalExceptionHandler {
         return ResponseEntity.status(ex.status).body(errorResponse)
     }
 
+    @ExceptionHandler(ExecutionException::class)
+    fun handleExecutionException(ex: ExecutionException): ResponseEntity<ErrorResponse> {
+        return when (val cause = ex.cause) {
+            is BaseCustomException -> handleBaseCustomException(cause)
+            else -> handleGenericException(cause ?: ex)
+        }
+    }
+
     @ExceptionHandler(Exception::class)
-    fun handleGenericException(ex: Exception): ResponseEntity<ErrorResponse> {
+    fun handleGenericException(ex: Throwable): ResponseEntity<ErrorResponse> {
         val errorResponse = ErrorResponse(
             errorCode = "GenericError",
             errorMessage = ex.message ?: "A server error occurred",
