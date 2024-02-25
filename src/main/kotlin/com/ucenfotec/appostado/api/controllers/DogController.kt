@@ -1,6 +1,7 @@
 package com.ucenfotec.appostado.api.controllers
 
 import com.ucenfotec.appostado.core.application.common.interfaces.IDogService
+import com.ucenfotec.appostado.core.application.dtos.dog.DogDetailDTO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.scheduling.annotation.Async
@@ -15,7 +16,8 @@ class DogController @Autowired constructor(
 ){
     @RequestMapping("")
     fun getDog(): ResponseEntity<Any> {
-        val dogResult = dogService.getDog()
+        val dogResultFuture = dogService.getDog()
+        val dogResult = dogResultFuture.get() // This will wait for the completion
         return ResponseEntity.ok(dogResult)
     }
 }

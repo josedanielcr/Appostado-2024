@@ -16,12 +16,13 @@ class DogServiceImpl(
     val dogRepository: IDogRepository
 ) : IDogService {
 
-    override fun getDog(): DogDetailDTO {
-        //val result = dogRepository.getDog();
-        //return dogMapper.dogToDogDetailDTO();
-        throw DogNotFoundException();
-        //use this to test the global exception handler
-        //throw DogNotFoundException(additionalDetails = mapOf("dog" to result));
-        //to add additional details
+    override fun getDog(): CompletableFuture<DogDetailDTO> {
+        return CompletableFuture.supplyAsync {
+            Thread.sleep(2000) // Delay for 2 seconds for testing
+            val dog = dogRepository.getDog().join()
+            dogMapper.dogToDogDetailDTO(dog)
+            //throw DogNotFoundException(); //use this to test the global exception handler
+            throw DogNotFoundException(additionalDetails = mapOf("dog" to dog)); //to add additional details
+        }
     }
 }

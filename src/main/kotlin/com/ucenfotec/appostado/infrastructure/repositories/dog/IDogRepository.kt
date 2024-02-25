@@ -4,5 +4,5 @@ import com.ucenfotec.appostado.core.domain.entities.Dog
 import java.util.concurrent.CompletableFuture
 
 interface IDogRepository {
-    fun getDog(): Dog
+    fun getDog(): CompletableFuture<Dog>
 }
