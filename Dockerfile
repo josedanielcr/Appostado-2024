@@ -8,6 +8,7 @@ COPY --chown=gradle:gradle src src
 COPY --chown=gradle:gradle gradlew .
 COPY --chown=gradle:gradle gradlew.bat .
 
+
 # Grant execution permissions to the Gradle wrapper
 RUN chmod +x ./gradlew
 
