@@ -2,12 +2,15 @@ package com.ucenfotec.appostado.core.application.services
 
 import com.ucenfotec.appostado.core.application.common.exceptions.DogNotFoundException
 import com.ucenfotec.appostado.core.application.common.interfaces.IDogService
+import com.ucenfotec.appostado.core.application.dtos.dog.DogDTO
 import com.ucenfotec.appostado.core.application.dtos.dog.DogDetailDTO
 import com.ucenfotec.appostado.core.application.mappings.dog.IDogMapper
 import com.ucenfotec.appostado.core.domain.entities.Dog
 import com.ucenfotec.appostado.infrastructure.repositories.dog.IDogRepository
-import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Service
+import java.sql.Timestamp
+import java.time.LocalDateTime
+import java.util.*
 import java.util.concurrent.CompletableFuture
 
 @Service
@@ -16,13 +19,40 @@ class DogServiceImpl(
     val dogRepository: IDogRepository
 ) : IDogService {
 
-    override fun getDog(): CompletableFuture<DogDetailDTO> {
+    override fun getDogById(dogId : String): CompletableFuture<DogDetailDTO> {
         return CompletableFuture.supplyAsync {
-            Thread.sleep(2000) // Delay for 2 seconds for testing
-            val dog = dogRepository.getDog().join()
+            //business logic
+            val dog = dogRepository.getDogById(dogId).join()
             dogMapper.dogToDogDetailDTO(dog)
-            //throw DogNotFoundException(); //use this to test the global exception handler
-            throw DogNotFoundException(additionalDetails = mapOf("dog" to dog)); //to add additional details
+        }
+    }
+
+    override fun getDogs(): CompletableFuture<List<DogDetailDTO>> {
+        return CompletableFuture.supplyAsync {
+            val dogs = dogRepository.getDogs().join()
+            dogs.map { dogMapper.dogToDogDetailDTO(it) }
+        }
+    }
+
+    override fun createDog(dog: DogDTO): CompletableFuture<DogDetailDTO> {
+        return CompletableFuture.supplyAsync {
+            val dogEntity = dogMapper.dogDTOToDog(dog)
+            val createdDog = dogRepository.createDog(dogEntity).join()
+            dogMapper.dogToDogDetailDTO(createdDog)
+        }
+    }
+
+    override fun updateDog(dogId: String, dog: DogDetailDTO): CompletableFuture<DogDetailDTO> {
+        return CompletableFuture.supplyAsync {
+            val dogEntity = dogMapper.dogDetailDTOToDog(dog)
+            val updatedDog = dogRepository.updateDog(dogId, dogEntity).join()
+            dogMapper.dogToDogDetailDTO(updatedDog)
+        }
+    }
+
+    override fun deleteDog(dogId: String): CompletableFuture<Boolean> {
+        return CompletableFuture.supplyAsync {
+            dogRepository.deleteDog(dogId).join()
         }
     }
 }

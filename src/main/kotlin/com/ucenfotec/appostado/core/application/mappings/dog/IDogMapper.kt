@@ -8,4 +8,5 @@ import org.mapstruct.Mapper
 interface IDogMapper {
     fun dogToDogDetailDTO(dog: Dog): DogDetailDTO
     fun dogDTOToDog(dogDTO: DogDTO): Dog
+    fun dogDetailDTOToDog(dogDetailDTO: DogDetailDTO): Dog
 }

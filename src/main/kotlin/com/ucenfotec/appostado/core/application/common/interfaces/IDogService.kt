@@ -1,9 +1,14 @@
 package com.ucenfotec.appostado.core.application.common.interfaces
 
+import com.ucenfotec.appostado.core.application.dtos.dog.DogDTO
 import com.ucenfotec.appostado.core.application.dtos.dog.DogDetailDTO
 import org.springframework.scheduling.annotation.Async
 import java.util.concurrent.CompletableFuture
 
 interface IDogService {
-    fun getDog(): CompletableFuture<DogDetailDTO>
+    fun getDogById(dogId : String): CompletableFuture<DogDetailDTO>
+    fun getDogs(): CompletableFuture<List<DogDetailDTO>>
+    fun createDog(dog: DogDTO): CompletableFuture<DogDetailDTO>
+    fun updateDog(dogId: String, dog: DogDetailDTO): CompletableFuture<DogDetailDTO>
+    fun deleteDog(dogId: String): CompletableFuture<Boolean>
 }
