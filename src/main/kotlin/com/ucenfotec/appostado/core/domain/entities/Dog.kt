@@ -12,8 +12,8 @@ data class Dog(
     val age: Int
 ) : BaseEntity(
     id = UUID.randomUUID().toString(),
-    createdAt = Timestamp.now(),
-    updatedAt = Timestamp.now()
+    createdAt = null,
+    updatedAt = null
 ) {
     companion object {
         fun fromDocumentSnapshot(documentSnapshot: DocumentSnapshot): Dog {
@@ -24,7 +24,7 @@ data class Dog(
 
             return Dog(
                 name = data.getValueOrThrow<String>("name"),
-                age = data.getValueOrThrow<Int>("age")
+                age = data.getValueOrThrow<Long>("age").toInt()
             ).apply {
                 id = documentSnapshot.id
                 createdAt = data.getValueOrThrow<Timestamp>("createdAt")

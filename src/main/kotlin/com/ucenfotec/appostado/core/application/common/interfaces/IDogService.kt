@@ -9,6 +9,6 @@ interface IDogService {
     fun getDogById(dogId : String): CompletableFuture<DogDetailDTO>
     fun getDogs(): CompletableFuture<List<DogDetailDTO>>
     fun createDog(dog: DogDTO): CompletableFuture<DogDetailDTO>
-    fun updateDog(dogId: String, dog: DogDetailDTO): CompletableFuture<DogDetailDTO>
+    fun updateDog(dogId: String, dog: DogDTO): CompletableFuture<DogDetailDTO>
     fun deleteDog(dogId: String): CompletableFuture<Boolean>
 }

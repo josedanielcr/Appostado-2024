@@ -31,19 +31,21 @@ class DogController @Autowired constructor(
     @PostMapping
     fun createDog(@RequestBody dog: DogDTO): ResponseEntity<Any> {
         val createdDog = dogService.createDog(dog);
-        return ResponseEntity.ok(createdDog);
+        val createdResult = createdDog.get();
+        return ResponseEntity.ok(createdResult);
     }
 
     @PutMapping("{dogId}")
-    fun updateDog(@PathVariable dogId: String, @RequestBody dog: DogDetailDTO): ResponseEntity<Any> {
+    fun updateDog(@PathVariable dogId: String, @RequestBody dog: DogDTO): ResponseEntity<Any> {
         val updatedDog = dogService.updateDog(dogId, dog);
-        return ResponseEntity.ok(updatedDog);
+        val updatedResult = updatedDog.get();
+        return ResponseEntity.ok(updatedResult);
     }
 
     @DeleteMapping("{dogId}")
     fun deleteDog(@PathVariable dogId: String): ResponseEntity<Any> {
         val deletedDog = dogService.deleteDog(dogId);
-        return ResponseEntity.ok(deletedDog);
+        val deletedResult = deletedDog.get();
+        return ResponseEntity.ok(deletedResult);
     }
-
 }
