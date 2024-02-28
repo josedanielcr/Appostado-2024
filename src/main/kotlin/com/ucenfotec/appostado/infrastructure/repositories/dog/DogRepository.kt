@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture
 class DogRepository(private val firestore : Firestore) : IDogRepository {
 
     private val DOGS_COLLECTION: String = "dogs"
-    @Async
+
     override fun getDogById(dogId : String): CompletableFuture<Dog> {
         return CompletableFuture.supplyAsync {
             val documentSnapshot = firestore.collection(DOGS_COLLECTION).document(dogId).get().get()

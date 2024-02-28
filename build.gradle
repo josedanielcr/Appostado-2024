@@ -27,6 +27,9 @@ dependencies {
 	kapt 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	implementation "com.google.firebase:firebase-admin:8.0.0"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+	implementation 'com.azure:azure-security-keyvault-secrets:4.7.3'
+	implementation 'com.azure:azure-identity-broker:1.0.2'
+	implementation 'com.azure:azure-identity:1.11.2'
 	implementation "com.google.cloud:google-cloud-firestore:3.16.1"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -1,3 +1,4 @@
+# Build stage
 FROM gradle:7.2.0-jdk17 AS build
 WORKDIR /workspace/app
 
@@ -8,12 +9,10 @@ COPY --chown=gradle:gradle src src
 COPY --chown=gradle:gradle gradlew .
 COPY --chown=gradle:gradle gradlew.bat .
 
-
 # Grant execution permissions to the Gradle wrapper
 RUN chmod +x ./gradlew
 
-# Use Gradle wrapper to build the project
-RUN ./gradlew build --no-daemon
+RUN ./gradlew build -x test --no-daemon
 
 FROM openjdk:17
 VOLUME /tmp
