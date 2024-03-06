@@ -23,10 +23,13 @@ fun validateSignUpUser(user : UserDto, userRepository: IUserRepository) {
 
 fun checkIfUserExists(email: String, userRepository: IUserRepository) {
     try {
-        val user = userRepository.getUserByEmail(email).join();
+        val user = userRepository.getUserByEmail(email).join()
         if (user != null) throw UserAlreadyExistsException()
-    } catch (e : Exception){
-        return;
+    } catch (e: Exception) {
+        if (e is UserAlreadyExistsException) {
+            throw e
+        }
+        return
     }
 
 }
