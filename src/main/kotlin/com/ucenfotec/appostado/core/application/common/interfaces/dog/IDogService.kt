@@ -1,4 +1,4 @@
-package com.ucenfotec.appostado.core.application.common.interfaces
+package com.ucenfotec.appostado.core.application.common.interfaces.dog
 
 import com.ucenfotec.appostado.core.application.dtos.dog.DogDTO
 import com.ucenfotec.appostado.core.application.dtos.dog.DogDetailDTO
