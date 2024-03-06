@@ -1,4 +1,4 @@
-package com.ucenfotec.appostado.core.application.common.exceptions
+package com.ucenfotec.appostado.core.application.common.exceptions.core
 
 import org.springframework.http.HttpStatus
 import java.time.LocalDateTime
