@@ -1,5 +1,6 @@
 package com.ucenfotec.appostado.core.application.common.exceptions
 
+import com.ucenfotec.appostado.core.application.common.exceptions.core.BaseCustomException
 import org.springframework.http.HttpStatus
 
 class SportNotFoundException(
