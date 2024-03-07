@@ -46,7 +46,11 @@ class UserRepository(
     }
 
     override fun updateUser(userId: String, user: User): CompletableFuture<User> {
-        TODO("Not yet implemented")
+        return CompletableFuture.supplyAsync {
+            val documentReference = firestore.collection(USERS_COLLECTION).document(userId);
+            documentReference.set(user).get();
+            getUserById(userId).join();
+        }
     }
 
     override fun deleteUser(userId: String): CompletableFuture<Boolean> {

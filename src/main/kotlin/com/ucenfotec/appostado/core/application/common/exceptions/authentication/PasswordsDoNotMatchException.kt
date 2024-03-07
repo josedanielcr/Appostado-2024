@@ -3,11 +3,11 @@ package com.ucenfotec.appostado.core.application.common.exceptions.authenticatio
 import com.ucenfotec.appostado.core.application.common.exceptions.core.BaseCustomException
 import org.springframework.http.HttpStatus
 
-class InvalidPasswordException(
+class PasswordsDoNotMatchException(
     additionalDetails: Map<String, Any?>? = null
 ) : BaseCustomException(
-    code = "InvalidPasswordException",
-    message = "The provided password is invalid.",
+    code = "PasswordsDoNotMatchException",
+    message = "The new password and the confirmation password do not match",
     status = HttpStatus.BAD_REQUEST,
     additionalDetails = additionalDetails
 )

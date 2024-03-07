@@ -21,8 +21,8 @@ fun createUserEntityByUserAndPassword(user: UserDto, salt : String, hash : Strin
     return newUser;
 }
 
-fun validateUserPassword(user: UserLoginDto, userEntity: User, passwordManager : PasswordManager) {
+fun validateUserPassword(password : String, salt : String, hash : String, passwordManager : PasswordManager) {
     val isPasswordValid = passwordManager
-        .validatePassword(user.password, userEntity.passwordSalt, userEntity.passwordHash);
+        .validatePassword(password, salt, hash);
     if (!isPasswordValid) throw InvalidPasswordException();
 }
