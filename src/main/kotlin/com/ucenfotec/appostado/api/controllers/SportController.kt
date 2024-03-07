@@ -1,12 +1,10 @@
 package com.ucenfotec.appostado.api.controllers
 
-import com.ucenfotec.appostado.core.application.common.interfaces.ISportService
+import com.ucenfotec.appostado.core.application.common.interfaces.sport.ISportService
 import com.ucenfotec.appostado.core.application.dtos.sport.SportDTO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
-import org.springframework.scheduling.annotation.Async
 import org.springframework.web.bind.annotation.*
-import java.util.concurrent.CompletableFuture
 
 @RestController
 @RequestMapping("/api/v1/sport")

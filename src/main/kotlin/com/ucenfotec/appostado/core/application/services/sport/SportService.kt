@@ -1,8 +1,7 @@
-package com.ucenfotec.appostado.core.application.services
+package com.ucenfotec.appostado.core.application.services.sport
 
 import com.google.cloud.Timestamp
-import com.ucenfotec.appostado.core.application.common.exceptions.SportNotFoundException
-import com.ucenfotec.appostado.core.application.common.interfaces.ISportService
+import com.ucenfotec.appostado.core.application.common.interfaces.sport.ISportService
 import com.ucenfotec.appostado.core.application.dtos.sport.SportDTO
 import com.ucenfotec.appostado.core.application.dtos.sport.SportDetailDTO
 import com.ucenfotec.appostado.core.application.mappings.sport.ISportMapper
