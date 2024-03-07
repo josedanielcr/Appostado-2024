@@ -15,8 +15,8 @@ class SportController @Autowired constructor(
 ){
     @RequestMapping("{sportId}")
     fun getDogById(@PathVariable sportId : String): ResponseEntity<Any> {
-        val dogResultFuture = sportService.getSportById(sportId);
-        val sportResult = dogResultFuture.get();
+        val sportResultFuture = sportService.getSportById(sportId);
+        val sportResult = sportResultFuture.get();
         return ResponseEntity.ok(sportResult);
     }
 

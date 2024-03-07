@@ -1,7 +1,6 @@
 package com.ucenfotec.appostado.core.application.services
 
 import com.google.cloud.Timestamp
-import com.ucenfotec.appostado.core.application.common.exceptions.DogNotFoundException
 import com.ucenfotec.appostado.core.application.common.interfaces.IDogService
 import com.ucenfotec.appostado.core.application.dtos.dog.DogDTO
 import com.ucenfotec.appostado.core.application.dtos.dog.DogDetailDTO
