@@ -1,4 +1,4 @@
-package com.ucenfotec.appostado.core.application.common.interfaces
+package com.ucenfotec.appostado.core.application.common.interfaces.sport
 
 import com.ucenfotec.appostado.core.application.dtos.sport.SportDTO
 import com.ucenfotec.appostado.core.application.dtos.sport.SportDetailDTO

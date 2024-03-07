@@ -1,7 +1,7 @@
 package com.ucenfotec.appostado.infrastructure.repositories.dog
 
 import com.google.cloud.firestore.Firestore
-import com.ucenfotec.appostado.core.application.common.exceptions.SportNotFoundException
+import com.ucenfotec.appostado.core.application.common.exceptions.sport.SportNotFoundException
 import com.ucenfotec.appostado.core.domain.entities.Sport
 import com.ucenfotec.appostado.infrastructure.repositories.sport.ISportRepository
 import org.springframework.scheduling.annotation.Async

@@ -25,12 +25,15 @@ dependencies {
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 	kapt 'org.mapstruct:mapstruct-processor:1.4.2.Final'
-	implementation "com.google.firebase:firebase-admin:8.0.0"
+	implementation "com.google.firebase:firebase-admin:9.2.0"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
 	implementation 'com.azure:azure-security-keyvault-secrets:4.7.3'
 	implementation 'com.azure:azure-identity-broker:1.0.2'
 	implementation 'com.azure:azure-identity:1.11.2'
 	implementation "com.google.cloud:google-cloud-firestore:3.16.1"
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

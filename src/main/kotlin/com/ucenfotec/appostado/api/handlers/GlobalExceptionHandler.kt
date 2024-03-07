@@ -1,7 +1,7 @@
 package com.ucenfotec.appostado.api.handlers
 
 import com.ucenfotec.appostado.api.common.ErrorResponse
-import com.ucenfotec.appostado.core.application.common.exceptions.BaseCustomException
+import com.ucenfotec.appostado.core.application.common.exceptions.core.BaseCustomException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
