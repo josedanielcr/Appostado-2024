@@ -1,7 +1,7 @@
-package com.ucenfotec.appostado.core.application.services
+package com.ucenfotec.appostado.core.application.services.team
 
 import com.google.cloud.Timestamp
-import com.ucenfotec.appostado.core.application.common.interfaces.ITeamService
+import com.ucenfotec.appostado.core.application.common.interfaces.team.ITeamService
 import com.ucenfotec.appostado.core.application.dtos.team.TeamDTO
 import com.ucenfotec.appostado.core.application.dtos.team.TeamDetailDTO
 import com.ucenfotec.appostado.core.application.mappings.team.ITeamMapper

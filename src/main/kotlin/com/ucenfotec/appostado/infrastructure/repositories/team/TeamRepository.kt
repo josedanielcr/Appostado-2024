@@ -1,11 +1,8 @@
 package com.ucenfotec.appostado.infrastructure.repositories.team
 
 import com.google.cloud.firestore.Firestore
-import com.ucenfotec.appostado.core.application.common.exceptions.DogNotFoundException
-import com.ucenfotec.appostado.core.application.common.exceptions.SportNotFoundException
-import com.ucenfotec.appostado.core.application.common.exceptions.TeamNotFoundException
+import com.ucenfotec.appostado.core.application.common.exceptions.team.TeamNotFoundException
 import com.ucenfotec.appostado.core.domain.entities.Team
-import com.ucenfotec.appostado.infrastructure.repositories.team.ITeamRepository
 import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Repository
 import java.util.concurrent.CompletableFuture

@@ -1,5 +1,6 @@
 package com.ucenfotec.appostado.api.handlers
 
+import com.google.cloud.Timestamp
 import com.ucenfotec.appostado.api.common.ErrorResponse
 import com.ucenfotec.appostado.core.application.common.exceptions.core.BaseCustomException
 import org.springframework.http.HttpStatus
@@ -38,7 +39,7 @@ class GlobalExceptionHandler {
             errorCode = "GenericError",
             errorMessage = ex.message ?: "A server error occurred",
             status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
-            timestamp = LocalDateTime.now()
+            timestamp = Timestamp.now()
         )
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse)
     }

@@ -1,12 +1,10 @@
 package com.ucenfotec.appostado.api.controllers
 
-import com.ucenfotec.appostado.core.application.common.interfaces.ITeamService
+import com.ucenfotec.appostado.core.application.common.interfaces.team.ITeamService
 import com.ucenfotec.appostado.core.application.dtos.team.TeamDTO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
-import org.springframework.scheduling.annotation.Async
 import org.springframework.web.bind.annotation.*
-import java.util.concurrent.CompletableFuture
 
 @RestController
 @RequestMapping("/api/v1/team")

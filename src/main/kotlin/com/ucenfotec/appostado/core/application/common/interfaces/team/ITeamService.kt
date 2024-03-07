@@ -1,4 +1,4 @@
-package com.ucenfotec.appostado.core.application.common.interfaces
+package com.ucenfotec.appostado.core.application.common.interfaces.team
 
 import com.ucenfotec.appostado.core.application.dtos.team.TeamDTO
 import com.ucenfotec.appostado.core.application.dtos.team.TeamDetailDTO

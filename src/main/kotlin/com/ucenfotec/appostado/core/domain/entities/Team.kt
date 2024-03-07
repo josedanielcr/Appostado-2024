@@ -2,7 +2,7 @@ package com.ucenfotec.appostado.core.domain.entities
 
 import com.google.cloud.Timestamp
 import com.google.cloud.firestore.DocumentSnapshot
-import com.ucenfotec.appostado.core.application.common.exceptions.DocumentSnapshotMissingDataException
+import com.ucenfotec.appostado.core.application.common.exceptions.core.DocumentSnapshotMissingDataException
 import com.ucenfotec.appostado.core.domain.common.BaseEntity
 import com.ucenfotec.appostado.core.domain.extensions.getValueOrThrow
 import java.util.UUID
