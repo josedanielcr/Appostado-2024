@@ -11,7 +11,6 @@ import java.util.regex.Pattern
 class ValidationConstants{
     companion object {
         const val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{12,}$"
-        const val EMAIL_PATTERN = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
     }
 }
 
@@ -40,7 +39,8 @@ private fun validateNotNullFields(user : UserDto) {
     if (user.email === "") throw NullFieldValidationException()
     if (user.password === "") throw NullFieldValidationException()
 }
-private fun validatePasswordComplexity(password: String) {
+
+fun validatePasswordComplexity(password: String) {
     val passwordPattern = Pattern.compile(ValidationConstants.PASSWORD_PATTERN)
     if (!passwordPattern.matcher(password).matches()) {
         throw PasswordComplexityException()
