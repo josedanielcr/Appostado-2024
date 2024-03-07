@@ -27,11 +27,11 @@ class SportRepository(private val firestore : Firestore) : ISportRepository {
     override fun getSports(): CompletableFuture<List<Sport>> {
         return CompletableFuture.supplyAsync {
             val querySnapshot = firestore.collection(SPORTS_COLLECTION).get().get()
-            val dogs = mutableListOf<Sport>()
+            val sports = mutableListOf<Sport>()
             for (document in querySnapshot.documents) {
-                dogs.add(Sport.fromDocumentSnapshot(document))
+                sports.add(Sport.fromDocumentSnapshot(document))
             }
-            dogs
+            sports
         }
     }
 
