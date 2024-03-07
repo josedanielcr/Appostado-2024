@@ -39,4 +39,11 @@ class AuthenticationController(
         val updatedResult = updatedUser.get();
         return ResponseEntity.ok(updatedResult);
     }
+
+    @PutMapping("/user/{userId}/delete")
+    fun deleteUser(@PathVariable userId : String): ResponseEntity<Any> {
+        val deletedUser = authenticationService.deleteUser(userId);
+        val deletedResult = deletedUser.get();
+        return ResponseEntity.ok(deletedResult);
+    }
 }

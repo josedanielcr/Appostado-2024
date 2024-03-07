@@ -4,6 +4,8 @@ import com.google.cloud.Timestamp
 import com.google.cloud.firestore.DocumentSnapshot
 import com.ucenfotec.appostado.core.application.common.exceptions.core.DocumentSnapshotMissingDataException
 import com.ucenfotec.appostado.core.domain.common.BaseEntity
+import com.ucenfotec.appostado.core.domain.enums.EntityStatus
+import com.ucenfotec.appostado.core.domain.enums.UserRole
 import com.ucenfotec.appostado.core.domain.extensions.getValueOrThrow
 import com.ucenfotec.appostado.core.domain.extensions.toLocalDate
 import java.time.LocalDate
@@ -16,11 +18,13 @@ data class User(
     val profilePictureUrl: String? = null,
     val dateOfBirth: Timestamp,
     var passwordHash: String,
-    var passwordSalt: String
+    var passwordSalt: String,
+    var role : UserRole = UserRole.USER
 ) : BaseEntity(
     id = UUID.randomUUID().toString(),
     createdAt = null,
-    updatedAt = null
+    updatedAt = null,
+    status = EntityStatus.ACTIVE
 ) {
     companion object {
         fun fromDocumentSnapshot(documentSnapshot: DocumentSnapshot): User {
@@ -36,11 +40,13 @@ data class User(
                 profilePictureUrl = data.getValueOrThrow<String?>("profilePictureUrl"),
                 dateOfBirth = data.getValueOrThrow<Timestamp>("dateOfBirth"),
                 passwordHash = data.getValueOrThrow<String>("passwordHash"),
-                passwordSalt = data.getValueOrThrow<String>("passwordSalt")
+                passwordSalt = data.getValueOrThrow<String>("passwordSalt"),
+                role = data.getValueOrThrow<String>("role").let(UserRole::valueOf)
             ).apply {
                 id = documentSnapshot.id
                 createdAt = data.getValueOrThrow<Timestamp>("createdAt")
                 updatedAt = data.getValueOrThrow<Timestamp>("updatedAt")
+                status = data.getValueOrThrow<String>("status").let(EntityStatus::valueOf)
             }
         }
     }

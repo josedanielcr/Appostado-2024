@@ -9,6 +9,7 @@ import com.ucenfotec.appostado.core.application.extensions.authentication.*
 import com.ucenfotec.appostado.core.application.extensions.jwt.JwtService
 import com.ucenfotec.appostado.core.application.extensions.user.validateNewUser
 import com.ucenfotec.appostado.core.application.mappings.user.IUserMapper
+import com.ucenfotec.appostado.core.domain.enums.EntityStatus
 import com.ucenfotec.appostado.infrastructure.repositories.user.IUserRepository
 import org.springframework.stereotype.Service
 import java.util.concurrent.CompletableFuture
@@ -54,6 +55,16 @@ class AuthenticationService(
             userEntity.passwordHash = hash;
             userEntity.updatedAt = Timestamp.now();
             userRepository.updateUser(userEntity.id, userEntity).join();
+            true;
+        }
+    }
+
+    override fun deleteUser(userId: String): CompletableFuture<Boolean> {
+        return CompletableFuture.supplyAsync {
+            val userEntity = userRepository.getUserById(userId).join() ?: throw UserNotFoundException();
+            userEntity.status = EntityStatus.INACTIVE;
+            userEntity.updatedAt = Timestamp.now();
+            userRepository.updateUser(userId, userEntity).join();
             true;
         }
     }

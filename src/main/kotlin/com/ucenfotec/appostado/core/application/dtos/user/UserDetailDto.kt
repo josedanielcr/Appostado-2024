@@ -11,5 +11,7 @@ data class UserDetailDto(
     val email : String,
     val dateOfBirth : Timestamp,
     val createdAt : Timestamp,
-    val updatedAt : Timestamp
+    val updatedAt : Timestamp,
+    val status : String,
+    val role : String
 )

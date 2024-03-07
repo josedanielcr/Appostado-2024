@@ -8,5 +8,6 @@ data class TeamDetailDTO(
     val photo: String,
     val sportId: String,
     val createdAt: Timestamp,
-    val updatedAt: Timestamp
+    val updatedAt: Timestamp,
+    val status : String
 )

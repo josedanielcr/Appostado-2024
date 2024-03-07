@@ -6,5 +6,6 @@ data class SportDetailDTO(
     val id: String,
     val name: String,
     val createdAt: Timestamp,
-    val updatedAt: Timestamp
+    val updatedAt: Timestamp,
+    val status : String
 )

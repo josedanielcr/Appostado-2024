@@ -4,6 +4,7 @@ import com.google.cloud.Timestamp
 import com.google.cloud.firestore.DocumentSnapshot
 import com.ucenfotec.appostado.core.application.common.exceptions.core.DocumentSnapshotMissingDataException
 import com.ucenfotec.appostado.core.domain.common.BaseEntity
+import com.ucenfotec.appostado.core.domain.enums.EntityStatus
 import com.ucenfotec.appostado.core.domain.extensions.getValueOrThrow
 import java.util.UUID
 
@@ -12,7 +13,8 @@ data class Sport(
 ) : BaseEntity(
     id = UUID.randomUUID().toString(),
     createdAt = null,
-    updatedAt = null
+    updatedAt = null,
+    status = EntityStatus.ACTIVE
 ) {
     companion object {
         fun fromDocumentSnapshot(documentSnapshot: DocumentSnapshot): Sport {
@@ -27,6 +29,7 @@ data class Sport(
                 id = documentSnapshot.id
                 createdAt = data.getValueOrThrow<Timestamp>("createdAt")
                 updatedAt = data.getValueOrThrow<Timestamp>("updatedAt")
+                status = data.getValueOrThrow<String>("status").let(EntityStatus::valueOf)
             }
         }
     }

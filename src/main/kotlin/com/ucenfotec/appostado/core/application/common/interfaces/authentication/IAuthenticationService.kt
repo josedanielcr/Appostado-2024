@@ -7,4 +7,5 @@ interface IAuthenticationService {
     fun signUp(user : UserDto): CompletableFuture<UserDetailDto>
     fun signIn(user : UserLoginDto): CompletableFuture<UserLoginResultDto>
     fun updatePassword(user : UpdateUserPasswordDto): CompletableFuture<Boolean>
+    fun deleteUser(userId : String): CompletableFuture<Boolean>
 }
